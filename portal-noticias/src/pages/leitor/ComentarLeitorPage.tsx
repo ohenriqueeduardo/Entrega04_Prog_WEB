@@ -5,7 +5,7 @@ import Footer from "../../components/layout/Footer";
 import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
 
-export default function ComentarAutorPage() {
+export default function ComentarLeitorPage() {
   const { noticiaId } = useParams();
   const [texto, setTexto] = useState("");
   const [enviado, setEnviado] = useState(false);
@@ -47,7 +47,9 @@ export default function ComentarAutorPage() {
 
           <Button onClick={enviarComentario}>Enviar Comentário</Button>
 
-          {enviado && <p className="sucesso">Comentário enviado com sucesso.</p>}
+          {enviado && (
+            <p className="sucesso">Comentário enviado com sucesso.</p>
+          )}
 
           <Link to={`/noticia/${noticiaId}`}>Voltar para a Notícia</Link>
         </Card>

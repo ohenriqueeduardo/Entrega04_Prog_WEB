@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
@@ -6,18 +5,10 @@ import Sidebar from "../../components/layout/Sidebar";
 import Card from "../../components/ui/Card";
 import InputField from "../../components/ui/InputField";
 import Button from "../../components/ui/Button";
-import TagBadge from "../../components/ui/TagBadge";
 
-export default function FormTagPage() {
+export default function FormCidadePage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [nome, setNome] = useState("");
-
-  const slug = nome
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "-");
 
   return (
     <>
@@ -26,16 +17,14 @@ export default function FormTagPage() {
         <Sidebar />
         <section className="admin-content">
           <Card className="form-card-full">
-            <h1>{id ? "Editar Tag" : "Nova Tag"}</h1>
+            <h1>{id ? "Editar Cidade" : "Nova Cidade"}</h1>
 
-            <InputField label="Nome" value={nome} onChange={setNome} />
-            <p>Slug: {slug || "slug-da-tag"}</p>
-
-            <TagBadge nome={nome || "Preview"} slug={slug || "preview"} />
+            <InputField label="Nome" placeholder="São Paulo" />
+            <select><option>SP</option><option>RJ</option><option>MG</option></select>
 
             <div className="acoes">
-              <Button onClick={() => navigate("/admin/tags")}>Salvar</Button>
-              <Button variant="outline" onClick={() => navigate("/admin/tags")}>Cancelar</Button>
+              <Button onClick={() => navigate("/admin/cidades")}>Salvar</Button>
+              <Button variant="outline" onClick={() => navigate("/admin/cidades")}>Cancelar</Button>
             </div>
           </Card>
         </section>

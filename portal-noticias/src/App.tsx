@@ -1,122 +1,101 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router";
 
-function App() {
-  const [count, setCount] = useState(0)
+import HomePage from "./pages/publico/HomePage";
+import LoginPage from "./pages/publico/LoginPage";
+import CadastroPage from "./pages/publico/CadastroPage";
+import LembrarSenhaPage from "./pages/publico/LembrarSenhaPage";
+import BuscaPorUFPage from "./pages/publico/BuscaPorUFPage";
+import BuscaPorTagPage from "./pages/publico/BuscaPorTagPage";
+import DetalheNoticiaPage from "./pages/publico/DetalheNoticiaPage";
 
+import PerfilLeitorPage from "./pages/leitor/PerfilLeitorPage";
+import ComentarLeitorPage from "./pages/leitor/ComentarLeitorPage";
+
+import PerfilAutorPage from "./pages/autor/PerfilAutorPage";
+import ComentarAutorPage from "./pages/autor/ComentarAutorPage";
+import MinhasNoticiasPage from "./pages/autor/MinhasNoticiasPage";
+import NovaNoticiaPage from "./pages/autor/NovaNoticiaPage";
+import EditarNoticiaPage from "./pages/autor/EditarNoticiaPage";
+
+import PainelEditorPage from "./pages/editor/PainelEditorPage";
+import PerfilEditorPage from "./pages/editor/PerfilEditorPage";
+import PublicarDespublicarPage from "./pages/editor/PublicarDespublicarPage";
+import EditarQualquerNoticiaPage from "./pages/editor/EditarQualquerNoticiaPage";
+
+import DashboardPage from "./pages/superadmin/DashboardPage";
+import CrudUFPage from "./pages/superadmin/CrudUFPage";
+import FormUFPage from "./pages/superadmin/FormUFPage";
+import CrudCidadesPage from "./pages/superadmin/CrudCidadesPage";
+import FormCidadePage from "./pages/superadmin/FormCidadePage";
+import CrudTagsPage from "./pages/superadmin/CrudTagsPage";
+import FormTagPage from "./pages/superadmin/FormTagPage";
+import CrudPerfisPage from "./pages/superadmin/CrudPerfisPage";
+import CrudNoticiasPage from "./pages/superadmin/CrudNoticiasPage";
+import FormNoticiaAdminPage from "./pages/superadmin/FormNoticiaAdminPage";
+import CrudUsuariosPage from "./pages/superadmin/CrudUsuariosPage";
+import FormUsuarioPage from "./pages/superadmin/FormUsuarioPage";
+import GerenciarComentariosPage from "./pages/superadmin/GerenciarComentariosPage";
+
+import NotFoundPage from "./pages/NotFoundPage";
+
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <BrowserRouter>
+      <Routes>
+        {/* Público */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/cadastro" element={<CadastroPage />} />
+        <Route path="/lembrar-senha" element={<LembrarSenhaPage />} />
+        <Route path="/busca/uf/:sigla" element={<BuscaPorUFPage />} />
+        <Route path="/busca/tag/:slug" element={<BuscaPorTagPage />} />
+        <Route path="/noticia/:id" element={<DetalheNoticiaPage />} />
 
-      <div className="ticks"></div>
+        {/* Leitor */}
+        <Route path="/leitor/perfil" element={<PerfilLeitorPage />} />
+        <Route path="/leitor/comentar/:noticiaId" element={<ComentarLeitorPage />} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        {/* Autor */}
+        <Route path="/autor/perfil" element={<PerfilAutorPage />} />
+        <Route path="/autor/comentar/:noticiaId" element={<ComentarAutorPage />} />
+        <Route path="/autor/noticias" element={<MinhasNoticiasPage />} />
+        <Route path="/autor/noticias/nova" element={<NovaNoticiaPage />} />
+        <Route path="/autor/noticias/:id/editar" element={<EditarNoticiaPage />} />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        {/* Editor */}
+        <Route path="/editor/painel" element={<PainelEditorPage />} />
+        <Route path="/editor/perfil" element={<PerfilEditorPage />} />
+        <Route path="/editor/publicar/:id" element={<PublicarDespublicarPage />} />
+        <Route path="/editor/noticias/:id/editar" element={<EditarQualquerNoticiaPage />} />
+
+        {/* SuperAdmin */}
+        <Route path="/admin/dashboard" element={<DashboardPage />} />
+
+        <Route path="/admin/ufs" element={<CrudUFPage />} />
+        <Route path="/admin/ufs/nova" element={<FormUFPage />} />
+        <Route path="/admin/ufs/:id/editar" element={<FormUFPage />} />
+
+        <Route path="/admin/cidades" element={<CrudCidadesPage />} />
+        <Route path="/admin/cidades/nova" element={<FormCidadePage />} />
+        <Route path="/admin/cidades/:id/editar" element={<FormCidadePage />} />
+
+        <Route path="/admin/tags" element={<CrudTagsPage />} />
+        <Route path="/admin/tags/nova" element={<FormTagPage />} />
+        <Route path="/admin/tags/:id/editar" element={<FormTagPage />} />
+
+        <Route path="/admin/perfis" element={<CrudPerfisPage />} />
+
+        <Route path="/admin/noticias" element={<CrudNoticiasPage />} />
+        <Route path="/admin/noticias/:id/editar" element={<FormNoticiaAdminPage />} />
+
+        <Route path="/admin/usuarios" element={<CrudUsuariosPage />} />
+        <Route path="/admin/usuarios/:id/editar" element={<FormUsuarioPage />} />
+
+        <Route path="/admin/comentarios" element={<GerenciarComentariosPage />} />
+
+        {/* Rota coringa */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
